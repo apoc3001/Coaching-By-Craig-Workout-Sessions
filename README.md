@@ -1,13 +1,17 @@
 # Coaching by Craig — Workout Sessions
 
-Interactive session cards for clients, hosted on GitHub Pages.
+Tap a link to open the session. On your phone, press and hold the link to copy it, then paste it into WhatsApp or a text.
 
-| Session | File |
+| Session | Link to send |
 |---|---|
-| First gym session | `gym.html` |
-| Home session one (KB + DBs) | `home-1.html` |
-| Home session two (KB + DBs) | `home-2.html` |
+| First gym session | https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/gym |
+| Home session one (KB + DBs) | https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/home-1 |
+| Home session two (KB + DBs) | https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/home-2 |
 
-Link format (capitals matter): `https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/<file name without .html>`
+## Adding a new session
 
-Each card is a single self-contained HTML file. Search engines are asked not to index the site (`robots.txt`), and the home page doesn't list sessions, so a card is only reachable by its link.
+Upload the session's HTML file to this repo (**Add file → Upload files**). Its link is the address above with the file name on the end, without `.html`. Capitals matter.
+
+## Privacy
+
+Search engines are asked not to list the site (`robots.txt`), and the home page doesn't list sessions, so a card can only be opened from its link. Keep client names and health details off the cards.
