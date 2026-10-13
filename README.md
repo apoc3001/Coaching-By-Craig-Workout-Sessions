@@ -4,13 +4,13 @@ Tap a link to open the session. On your phone, press and hold the link to copy i
 
 | Session | Link to send |
 |---|---|
-| First gym session | https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/gym |
-| Home session one (KB + DBs) | https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/home-1 |
-| Home session two (KB + DBs) | https://apoc3001.github.io/Coaching-By-Craig-Workout-Sessions/home-2 |
+| First gym session | https://sessions.coachingbycraig.co.uk/gym |
+| Home session one (KB + DBs) | https://sessions.coachingbycraig.co.uk/home-1 |
+| Home session two (KB + DBs) | https://sessions.coachingbycraig.co.uk/home-2 |
 
 ## Adding a new session
 
-Upload the session's HTML file to this repo (**Add file → Upload files**). Its link is the address above with the file name on the end, without `.html`. Capitals matter.
+Upload the session's HTML file to this repo (**Add file → Upload files**). Its link is `sessions.coachingbycraig.co.uk/` followed by the file name, without `.html`.
 
 ## Privacy
 
