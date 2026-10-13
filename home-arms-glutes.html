@@ -1,0 +1,322 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Arms &amp; Glutes Home Session</title><link rel="icon" href="favicon.png"><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Outfit:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: single phone column, blocks in session order, fixed timer dock. Coaching by Craig dark brand, single theme by design. */
+:root{
+  color-scheme:dark;
+  --ink:#050605; --panel:#111310; --panel2:#181b16; --line:#262a22;
+  --text:#f1f3ee; --muted:#9ea397; --lime:#c7f135; --on-lime:#0b0d08;
+  --display:"Josefin Sans",system-ui,sans-serif; --body:"Outfit",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--text);font:16px/1.5 var(--body);padding-inline:16px;padding-block:0 140px;margin:0}
+.wrap{max-width:560px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+.caps{font-family:var(--display);text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:400;color:var(--muted)}
+header{padding-block:24px 8px;text-align:center}
+header img{width:150px;display:block;margin:0 auto}
+.hero{padding-block:8px 0}
+
+.progress{margin-top:8px;display:grid;grid-template-columns:repeat(9,1fr);gap:5px}
+.progress span{height:6px;border-radius:3px;background:var(--line);transition:background .3s}
+.progress span.done{background:var(--lime)}
+.progress-label{margin-top:8px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+
+.section{margin-top:28px}
+.block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:12px}
+.block.current{border-color:var(--lime)}
+.block.complete{opacity:.55}
+.bhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.bhead h2{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+.tag{font-size:12px;color:var(--lime);font-family:var(--display);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.note{color:var(--muted);font-size:14px;margin:6px 0 0}
+
+.step{display:flex;gap:14px;align-items:flex-start;padding-block:14px;border-top:1px solid var(--line)}
+.step:first-of-type{margin-top:12px}
+.tick{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid #3a4033;background:transparent;cursor:pointer;display:grid;place-items:center;margin-top:2px;padding:0}
+.tick svg{width:16px;height:16px;opacity:0}
+.tick[aria-pressed="true"]{background:var(--lime);border-color:var(--lime)}
+.tick[aria-pressed="true"] svg{opacity:1}
+.tick:focus-visible,.btn:focus-visible,.choice:focus-visible,.num:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.sbody{flex:1;min-width:0}
+.sname{font-weight:500;font-size:17px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.reps{font-family:var(--display);font-weight:600;color:var(--lime);white-space:nowrap;font-variant-numeric:tabular-nums}
+.how{color:var(--muted);font-size:14.5px;margin:3px 0 0}
+.step.done .sname{text-decoration:line-through;text-decoration-color:#6b705f;color:var(--muted)}
+.btn{font:500 14px var(--body);border-radius:999px;padding:8px 14px;border:1px solid var(--lime);background:transparent;color:var(--lime);cursor:pointer;margin-top:10px}
+.btn.solid{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+
+.log{display:inline-flex;align-items:center;gap:10px;margin-top:10px;font-size:14px;color:var(--muted)}
+.num{width:72px;font:600 17px var(--display);text-align:center;font-variant-numeric:tabular-nums;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 6px}
+.band{border:1px solid var(--line);border-radius:12px;margin:14px 0 0;padding:10px 14px 12px;display:flex;flex-wrap:wrap;gap:6px 18px}
+.band legend{padding:0 6px;font-size:11px}
+.band label{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer}
+.band input{accent-color:var(--lime);width:18px;height:18px}
+
+.info h2{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.12em;text-transform:uppercase}
+.info p,.info li{color:var(--text);font-size:15px}
+.info p{margin:8px 0 0}
+.info ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
+.info li span{color:var(--muted)}
+.scale{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.scale div{background:var(--panel2);border-radius:10px;padding:10px;font-size:13.5px;color:var(--muted)}
+.scale strong{display:block;color:var(--text);font-size:15px;font-weight:600;margin-bottom:2px}
+.scale .ok strong{color:var(--lime)}
+
+.send .row{margin-top:14px}
+.send .row > .caps{display:block;margin-bottom:8px;font-size:11px}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choice{font:500 14px var(--body);border-radius:999px;padding:8px 14px;border:1px solid var(--line);background:var(--panel2);color:var(--text);cursor:pointer}
+.choice[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
+.energy{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.energy .choice{padding:8px 0;text-align:center;font-variant-numeric:tabular-nums}
+.textin{width:100%;font:15px var(--body);color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea.textin{min-height:220px;resize:vertical;font-size:14px;line-height:1.45;white-space:pre-wrap}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+.actions .btn{margin:0;text-decoration:none;display:inline-block}
+.copied{font-size:14px;color:var(--lime)}
+
+.reset{display:block;margin:28px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:14px var(--body);cursor:pointer}
+footer{text-align:center;margin-top:28px}
+
+.dock{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#0b0d0af2;border-top:1px solid var(--line);backdrop-filter:blur(8px)}
+.dock-in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.clock{font-family:var(--display);font-weight:300;font-size:40px;line-height:1;font-variant-numeric:tabular-nums;min-width:3.2ch;color:var(--text)}
+.dock.running .clock{color:var(--lime)}
+.dock.finished .clock{color:var(--lime);animation:pulse 1s ease-in-out 3}
+@keyframes pulse{50%{opacity:.3}}
+.dlabel{flex:1;min-width:0}
+.dlabel .caps{display:block;font-size:11px}
+.dlabel div{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dock .btn{margin:0}
+@media (max-width:380px){.scale{grid-template-columns:1fr}.energy{grid-template-columns:repeat(5,1fr)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCADrAXoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8qqKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK+h/2Vv2NPE37SN+b92k0LwbBJsn1iSPJlYdY4FP32Hc9B354rhxuOw+XUJYn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YLhscsx5MROO/wAvPUV9p6bqdnrNjDe2F1BfWc6h4ri2kEkcinoVYZBH0r+eCu7+GXx18ffB26E3hDxTqGjJu3taxy77aQ+rwtlG/FTX5BnHh3h8RJ1ctn7Nv7L1j8nuvx+Ryui18L+//P8Ar1P3tpCAe1fl54C/4Ks+NtJWCDxX4Z0rxBEigPc2jNazufU/eT8lFeweG/8Agq94F1CTZrPhLWtH4J3wyx3K9sD+E569u1fmWJ4KzzDN/uOZLrFp/he/4GfLJbo+4ti/3R+VOr4+/wCHonwixxa69n/rzX/4quO17/grN4UtZnj0jwNquoICQJbm7jgB9CAAx/PFcVLhTO6rtHCy+aS/Ow1FvofeVYXjLx14e+HmiTax4l1my0PTYvvXN7MI1z6DPU+gGSa/Lz4gf8FRPif4ljnt/DtjpPhOBmOyeGE3FwF9C0hKZ9wtfLHjb4ieJ/iTqv8AaXinX9Q1+952y39w0uwHsoJwo9hgV9jl3hzj68lLHTVOPZe9L/Jet36GsaTe591ftJ/8FNzf21zoPwmilt0cGOTxHeR7Xx38iM8r/vtz6KODX5+alqV3rF/cX19cy3l5cOZJp53LvIxOSSTyTVeiv23KMjwOSUvZ4OFm95PWT9X+isvI6EklZBRRRXvjCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKOtABRX0L4X/wCCfX7Q3jHwvF4g0z4X6o2mSx+bGbqe3tZnXsRBLIshz1Hy89q8K8QeHtU8J61d6Rrem3ej6tZyGK5sb+BoZ4XH8LowBU+xFD918r3BarmWxn0Vb0fR7/xDqlrpul2NzqWo3Ught7O0iaWaZycBURQSxPoBXvmt/wDBPb9ojw/4XfxBefC3Vv7OSPzmW3lgnuVXGebeORpQR3GzI70PSPM9gWr5VufPFFKylGKsCrA4IPUUlAbBRXW+KPhL4v8ABfg3wv4r1vQrnT/D3idJZNIv5CpS7WNgrkAElcEjG4DI5GRzXJUbNp9A3SfRhRW74I8B+I/iV4ktPD/hXRL7xBrV0cQ2OnwNLI3qcDoo6ljgAckgV638SP2FPjx8JfC03iPxP8ONRs9FgXzJ7q1ngvBAmMl5FgkdkUDqzAAdzQ/dXNLRAvedlueD0UV1t58KPFdh8MbH4hz6Q8fg2+1BtKt9UMsZWS6VWcx7A28EKrHJXHHWjpcV0mk+v/D/AJHJUV13hH4SeLfHfhPxV4m0LR31DQ/C0MdxrF2s0aC0jkLBGKswZslG+6D0rkaHo+V77/J7fePpcKK67WvhJ4t8O/Drw/481HR3tvCevzTW+m6kZoytxJExWRQoYuMFSPmA6cVyNGzceq38g6XCiuv+J3wj8X/BrXLXR/GehXGg6hdWkd/BFOysJYJM7JFZCVIOCODwQQcEVFr/AMLfFPhjwL4Z8ZappL2nhrxK1wuk35ljZbowPsmwoYsu1uPmAz2zR0cuidvn29dH9w0m2kvX5Wvf7tfQ5WiivZPg/wDsd/GX49aM2r+BvAWoazpAYouoSSQ2lvIQSCEkndFfBBB2k4PBppN6oltLc8bors/ip8GfHHwR8QjRPHXhnUPDOpMu+OO9iwky92jkGUkXnGUJGeOtcZUppq6Kaa0YUUV0vw3+G3iT4u+M9O8J+EdLfWfEOoFxa2SSJGZNiM7fM7KowqseSOlUk5OyRLaWrOaor33xx+wT8fvh14avfEGvfDTU7fSbJDLcz200F0YkHJdkhkdgoHJbGAAScCvAqm6vYqzSuFFdpc/BnxnafCu0+JL6FK3gi5vDp6avFLHIi3AzmN1Vi8Z+U43qAeMdRk8FfBrxl8Q/C3ijxJ4f0OS/0Hwxbi51fUDNHFFaod2MmRl3E7ThVyx9ORTel79N/LrqJa2t12/L8zi6KKKACiivoDwT+wH+0D8Q/C0PiLQ/hlqcukzp5kMt3Pb2ckqdmSKaRHZSOQQuCMEZp2dr9BXV7Hz/AEVq+KvCeteB/EF7ofiHSrzRNZsn8u4sL+BoZomxnDKwBGQQR6gg1tfCr4R+Lvjd4vi8L+CNGfXdeliedLOOaOIlEGWO6RlXge9KPv8Aw6hJqHxaHIUV7l8SP2Hvjp8JPC9z4i8U/DnU7DRLUbri8hkhulgUdXkELuUUd2YAD1rw2ldN2Ks1qFFWtK0u71vU7PTrCB7q+vJkt4IIxlpJHYKqj3JIFbXxF+HHiT4S+MtR8KeLtKl0TxBp5VbmymZWaPcgdfmUlSCrKcgnrT2sJa3t0Oboorqtf+Fvinwx4F8M+MtU0l7Tw14la4XSb8yxst0YH2TYUMWXa3HzAZ7Zp2duboNJt2X9WOVoor2D4PfshfGL4+aVJqngXwJqGtaWjFPt7vFa2zsDghJZ3RXIIwQpOO9CTexLaW54/RXb/Fj4JeO/gZryaN488L6h4Z1CRS8K3kY8udRjLRyKSkgGQCVYgVxFSmmropprRhRRRTEFfVv/AATI8A6J48/aw0U67ax6hb6JYXetQWMyhluLiFB5S4PXazBwPWMV8pV2/wAFfi/r/wAB/idoPjnwzKkeraTP5ipKMxzIQVkicd1dSynvzkYIBrWm7S3tvr2dtH8nqZVYuUbJX207q+q+a0N74i/tPfFH4jfEa+8Y6p401y11mW5aaEWeoTQJYjdlY4FVh5ar0AGOmTkkmuO+IfxH8TfFjxZeeJvF+s3Ova7dhRNe3bAuwVQqjAAAAAAwABX1h4k8efsXfFTxDc+ONf8AD3xN8H63dyC61Dwt4eezksJ5yd0nlSP8yqxJzzH/ALIWvmL40eKPCHjH4jarqvgTwm3gnwtKyrZ6O921y0aqoG5nbu2NxUEgE4BPU8sVyKMGtvml8/P7+50yfO5TT0fyb+X9LsfTf7AVwnw7+FP7Q3xd0yxS78a+D9BtodEneNZDZNdNKklwqtxlQinP90MOjEH588I/tOfFPwX8QYPGth4612TX45xPLPdahLMtzyCUlVmIdGxgqeMfhW1+yx+0pd/s3eNNRu59Hh8UeEdesn0vxB4dun2x39q2cjOCA65OCQeCw/izXtGleM/2JvBOuQ+NdK8MfE7xFqUEv2m08GaxLaJp0UyksiyyqS7RAgdWkJB+ZW5FdUpfvo1b2iopd7NN306817+uj2Rjo6cqdtW2/VNJLXpaz++6MT/gp34Q0fw5+0nbatpGmpo7eK/D1j4ivrBF2iG7n8wSjb2JMYY+rMx7189/Br4Y6l8Z/ip4W8EaSrfbdcv4rQOoz5SE/vJCPREDOfZTV/49/GzX/wBob4qa3468RlEvtRkHl2sJPlWsKjbHCmf4VUAe5yTyTXoH7HPx/wDDP7NPijxX411HT9R1Hximh3Fl4WFtbxSW1veyqR51wXkUhVAA+VWyHfgcZyw/LD3pRsld8u/dqP5R7fIdVTa5YyvLRc3nonL9e59tfHTxB4W/aj+Hnxp+BfhWygjuPg5BbX/hEQDL3MNlEIL1ABySDvQdcl0Pavykr7S+FX/BVf43aH8RdAvfHni2bxV4MjuVGraRFpFhFJcWxyrhGSFDuAO4DcoJUAnBNfKvxSvvDGqfEbxJfeC4L208KXV/NPpltqMSRTwQOxZY2VHdRtzt4Y5AB4zis+WSnzN3clq+8lu/LmTWndM1vHk5Voo7f4X0+TT1812Prn4MeIr74Cf8E6fGnxE8FStZeN/E/ipPDVzrtnxc6ZZLCJCiOOYyxzyMH96pByqmvmHwv+0R8TvBbasdG8e+ILL+1reS1vgNQkcTxyAhtwYkbuTh/vDOQQa9H/Zd/ah0f4UeHfFPw7+IvhqTxr8JfFW19S0q3kEd1a3C42XNuxIG8bVyCVztUhhtwet1LxD+xr4D0HVbrw14b+I/xF1+9s5IbKy8U3NvZ2dg7rgSM9vtdnXJIwHXjscNWtb4pT3TSVvSKTjbzab7a663M6fwxhs027+sm0/krLvofJFfoh8N/hV4d+Ln/BNPwdpXiX4iaN8NbK38d3d1HqetoWimkEEiiFcEfMQ7N16Ia/O+ve/EHx88P6r+xT4X+EENnqa+JdL8Wza9NdPFGLNoHgljCq4k3l8uOCgGM81aaVOa7pf+lRf5K5z1It1aTWybv/4BJfm0j6z+HHwR8J/B39j/APacPhj4s+H/AIn/ANoaJZfaBoUbL9i2SS7d+WP397Y/3DX5o19AfAH9oHw78K/gP8c/BWrWep3Gq+OtOs7TTZrKKNoIXieUsZi0isoPmDG1W78Cvn+saibxLne65YK/pe6+R1pr2duvM/yj/kfZvxy/5Rofs5/9hvWf/R81fGVfQHxI/aB8O+MP2QfhR8KrOz1OLxD4T1G/u765nijFpIk8sjoImEhckBxnci98E18/0564mvNbSldeashL+HBdk/8A0ps/Yn9rnQ/Cv7TGu6T8BtSW10f4i2/hSy1/wRrcx2rczsji40+Q44V1hDA5684+QBvj79qTQtQ8L/sOfsz6Pq1nLp+qWF/4mtbq0nXbJDKl/tdGHYggiuE/bA/aa0r44/Gfwr448DprGhvoeh6fYxTX6Rw3Ed1bO7+ZH5cjjALKVOQcjoK6L9sT9tS1/ax+FnwrsLzSLnTvGXh0Xh1udY41s7qSURASwlW3ZbyyzKygKWwCw5q6jvTmo/and/Jys16p6+ifVl4SXI4RnsoOz7Nwaafz2+a7Hzx8K/DVr40+J/hDw9fSGGx1bWLOwnkU4KxyzojEHtgMa+xv22PGfi3xn+1u3wS0XxfY/DPwL4ZFvpGj219qTaXpFmi2qSedO6cDOSAxB4KgYya+FIJ5LWeOaGRopo2DpIhwysDkEHsQa+1tZ/aL/Z9/amsdH1L496H4w8N/EXT7SOzuvE/ghrdotXjjGEaeOUHZJz/Ch6feAwoUlzKLvom2132s/O2qt/eujBaSl5qyfbXb56a+VnuQ/tBfBH4yXP7NSeIPEXxw8D/Fb4f+CLxYoo/D/iJ9Vnt5rh44whk8gbiA6kK8nypnaMcV8WV9OftA/tMeB9V+EOkfBz4MeGtU8M/Dq1vf7V1G916VG1PWbzbtDziMlAqjHAJBITAUKAfmOoWspPpf79Fd/fe3lY0ekYr+lq/0387hX1J/wTF/5Pf+G3+/ff8ApDcV8t17N+x38Z9E/Z8/aM8JePvEVrqF7o2kNcmeDS40kuG8y2liXYruin5pATlhxn6V14eSjUvLs/yZhVTcGkfoF+zP4F8I+Cf2mdd1zw7+0XH8Q/EDR6r5Hw5hhlsjqErLIRal7iXY2w84AHKA8AGvym1+zutP13UrW9tG0+9guZIp7R12mCRWIZCOxUgjHtX2l4P+Pf7KHwl+KknxU8L6D8W/EHjS1ubjUbDTvEEmmQad9qk3YLtCxkCgucfexxwcV8b+NPFV5478Y694l1ERrqGs38+o3IiGEEs0jSPtHYZY4rzqaklTT6Rs10Wt9Hu93e99lqdkpfxLbOV/N6PftbTtu9NEfRf7DHxk0rR/EeqfB7x3C+o/DH4kbNKvbfBY2V6xC213EOcOr7ASPRW/gArsP22vE2k/s+eDNL/Zc8CXDyafojpqXi/V/K8qTWNTkRXUMP8AnmilCBkjhBn5Mn5P+GniS28G/Efwr4gvY5ZbPStWtL6dLcAyNHFMrsFBIBbCnGSBnuK7r9rf4vaN8ev2ifGfj3w/bX1no+tTwy28GpRolwgWCOM71R3UHKHox4xXRU9/lX3+fLblT+bb+S7Iwpvkcvw8m7qTXySXzfVnkNFFFAH0p/wTn+H2h/Er9r3wPpfiGGG802BrjUPsU4DLcyQQPJGmD1+ZQxHOQhyMZrkvjj+058TfiX8Xtc8S6p4r1zTr5L+X7JZ21/LCmmorkJFEqkbNgAHABJBJySTXBfCv4ma78G/iHoPjTwzcLa63o1ytzbu67kbqGRx3VlLKR3DHpX1b4t+JX7HXxu8QXXjvxd4e+JHgbxRet9q1XQfCz2ctheXJJaR4nlG5d7dc+WOcgAkmrn73s5J/De/q2nf7tO6t5ihaKqJrWVrPyV7r73fX9EfJ/wAR/if4r+L3ieTxF4y1288Ra08McBvL19z+Wi7UUY4AA9OpJJySSfqH/gk6nmftdWab1j3aFqQ3scBf3PU187/HTxX4F8Y/EO71D4ceD5fBHhRYo4LbTLi8a6lbYu0zOzE4Z8AlQSAc8nJNd3+xL8fPD/7Nvxxi8Z+JrPU77S00y8sjDpMUck2+WPapxJIi4B6/N+BqabXLLTeMvxi/zMcRCTUUtbSh9ylFv7kfYHwY+HepfsN6Hq3xW+Kvxh0Xxb4M8QaFc2Gk6F4c1C61OHxBLIvyLmSJUwOfm5xk5IGc/mJX0p+z3+0z4b0D4V+KfhB8XtO1bxH8MtWQ3en/ANkrHJfaJqI+7PbCV0UA5JZdwGc8EM4b5wvFgS7nW1kkmtQ7CKSaMRu6Z+UsoZgpIxkBjj1PWokv3re6sremrs/O7fla1upvG3Jbrd3+5arysl87+R9U/wDBOrwBpl98WNZ+J/ieJW8IfDDTJPEl40gBV7lA32WP/eLqzj3iHrXYftuXo/aV+A/ww/aPtbaKHV5xJ4W8VxQDAjvIizQvgdAy7+vZoxXIfCL9td/2bv2Zl8J/CuTUtE+J2ra4dR1zX7qxtZrYWyoUigg8wvu4Ckl4xgs+Oua3tK/4KG638VfhV8SvAPx/1LVPGOma9piLol1pel2UcmnahG++ORlTyNyFthJyxGzAHzGqr+8nGP2LNeu8rd7p8vrFWY6Puu8vtNp+m0fSzXPp0dmfGVfXX7Q3/JgH7LH/AF38R/8ApaK+Ra90+Knx10Hxx+zB8F/hxYWmoxa54Ll1Z9QuLiKNbaUXVwJY/JYOWbC8NuVcHpnrWsmnhpQ680H8kpX/ADRrQajWUntyz/GLS/E8p8AeH7fxZ478N6Hd3H2S11PUraymnyB5aSSqjNzxwGJ59K+0/wBuXxl4r1v9qu3+BWgeKrX4beAPDKWWkaRb3WovpulWym2jkNxcuvHVyN5BwAMcls/B6O0Tq6MUdTkMpwQfUV9q6l+0h8Bf2o9H0K4/aB0TxdoPxB0m0Sxl8WeCWt2XVoY1whuI5QQr8nlVP+8BhRL96MfJ3a2vpo/lrp53Wxy6qUn3Vk97O/66fdZ6MX46/A74yXf7M8ura78dPAfxS+Hvga7R1t9B8Rvqs9vNcOkSp5nkAk/ONqPJ8qlto7V8UV9QfHn9pfwJL8GbH4L/AAT8O6toHgBb0anq+qeIZI21PWrpQAhlEZKKg2qcDqVXCptIb5frLeUmtvz0V39+3lY22hFPfX89F92r82woooqiQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//Z" alt="Coaching by Craig">
+  </header>
+
+  <section class="hero">
+    <div class="progress" id="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="progress-label"><span class="caps" id="progressText">0 of 9 done</span><span class="caps">About 30 min</span></div>
+  </section>
+
+  <main id="plan">
+<section class="section block" id="w"><div class="bhead"><h2>Warm-up</h2><span class="tag">5 min</span></div><p class="note">Clear some floor space and get your band, dumbbells, kettlebell and a chair ready.</p><div class="step" data-key="w-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Warm up done" data-key="w-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Warm up</span><span class="reps">5 min</span></div><p class="how">March on the spot for 2 minutes, then 10 big arm circles each way and 10 glute bridges with no weight.</p><button class="btn" type="button" data-t="300" data-label="Warm-up · Warm up">Start 5:00 timer</button></div></div></section>
+<section class="section block" id="a1"><div class="bhead"><h2>Arms · Round 1</h2><span class="tag">2 + rest</span></div><p class="note">One set of curls, one set of kickbacks, then rest. Three rounds.</p><fieldset class="band"><legend class="caps">Band for curls</legend><label><input type="radio" name="band" id="band-light" value="lighter band (18 kg tag)" checked> Lighter · 18 kg tag</label><label><input type="radio" name="band" id="band-heavy" value="heavier band (23 kg tag)"> Heavier · 23 kg tag</label></fieldset><div class="step" data-key="a1-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Band biceps curl done" data-key="a1-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Band biceps curl</span><span class="reps">12–20 reps</span></div><p class="how">Stand on the middle of the band, feet hip-width apart, a handle in each hand. Keep your elbows tucked into your sides, curl up, then lower slowly for 2 seconds.</p><label class="log" for="in-curl-1">Reps done <input id="in-curl-1" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="curl" data-set="1"></label></div></div><div class="step" data-key="a1-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Dumbbell kickback done" data-key="a1-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Dumbbell kickback</span><span class="reps">12–20 each arm</span></div><p class="how">One hand on a chair or the kitchen worktop, lean forward a little with a flat back. Elbow up by your side, straighten your arm back, squeeze, then lower slowly. Both arms, left first.</p><label class="log" for="in-kick-1">Reps done <input id="in-kick-1" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="kick" data-set="1"></label></div></div><div class="step" data-key="a1-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="a1-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">60 sec</span></div><p class="how">Have some water, then start the next round.</p><button class="btn" type="button" data-t="60" data-label="Arms · Round 1 · Rest">Start 1:00 timer</button></div></div></section>
+<section class="section block" id="a2"><div class="bhead"><h2>Arms · Round 2</h2><span class="tag">2 + rest</span></div><div class="step" data-key="a2-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Band biceps curl done" data-key="a2-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Band biceps curl</span><span class="reps">12–20 reps</span></div><p class="how">Stand on the middle of the band, feet hip-width apart, a handle in each hand. Keep your elbows tucked into your sides, curl up, then lower slowly for 2 seconds.</p><label class="log" for="in-curl-2">Reps done <input id="in-curl-2" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="curl" data-set="2"></label></div></div><div class="step" data-key="a2-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Dumbbell kickback done" data-key="a2-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Dumbbell kickback</span><span class="reps">12–20 each arm</span></div><p class="how">One hand on a chair or the kitchen worktop, lean forward a little with a flat back. Elbow up by your side, straighten your arm back, squeeze, then lower slowly. Both arms, left first.</p><label class="log" for="in-kick-2">Reps done <input id="in-kick-2" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="kick" data-set="2"></label></div></div><div class="step" data-key="a2-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="a2-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">60 sec</span></div><p class="how">Have some water, then start the next round.</p><button class="btn" type="button" data-t="60" data-label="Arms · Round 2 · Rest">Start 1:00 timer</button></div></div></section>
+<section class="section block" id="a3"><div class="bhead"><h2>Arms · Round 3</h2><span class="tag">2 + rest</span></div><div class="step" data-key="a3-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Band biceps curl done" data-key="a3-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Band biceps curl</span><span class="reps">12–20 reps</span></div><p class="how">Stand on the middle of the band, feet hip-width apart, a handle in each hand. Keep your elbows tucked into your sides, curl up, then lower slowly for 2 seconds.</p><label class="log" for="in-curl-3">Reps done <input id="in-curl-3" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="curl" data-set="3"></label></div></div><div class="step" data-key="a3-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Dumbbell kickback done" data-key="a3-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Dumbbell kickback</span><span class="reps">12–20 each arm</span></div><p class="how">One hand on a chair or the kitchen worktop, lean forward a little with a flat back. Elbow up by your side, straighten your arm back, squeeze, then lower slowly. Both arms, left first.</p><label class="log" for="in-kick-3">Reps done <input id="in-kick-3" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="kick" data-set="3"></label></div></div><div class="step" data-key="a3-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="a3-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">60 sec</span></div><p class="how">Have some water, then start the next round.</p><button class="btn" type="button" data-t="60" data-label="Arms · Round 3 · Rest">Start 1:00 timer</button></div></div></section>
+<section class="section block" id="g1"><div class="bhead"><h2>Glutes · Round 1</h2><span class="tag">2 + rest</span></div><p class="note">One set of bridges, the leg raises on both sides, then rest. Three rounds.</p><div class="step" data-key="g1-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Kettlebell glute bridge done" data-key="g1-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Kettlebell glute bridge</span><span class="reps">15–20 reps</span></div><p class="how">Lie on your back, knees bent, feet flat, kettlebell held on your hips. Push through your heels and squeeze your bum to lift. Hold 2 seconds at the top, lower slowly. Keep your ribs down so your lower back doesn&#x27;t arch. If your right knee aches, move your feet a little further away.</p><label class="log" for="in-bridge-1">Reps done <input id="in-bridge-1" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="bridge" data-set="1"></label></div></div><div class="step" data-key="g1-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Side-lying leg raise done" data-key="g1-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Side-lying leg raise</span><span class="reps">12–15 each side</span></div><p class="how">Lie on your side, bottom knee bent, top leg straight and slightly behind you, toes pointing forward. Lift the top leg about a hand&#x27;s height, pause, lower slowly. You should feel it at the side of your bum, not the front of your hip.</p><label class="log" for="in-hip-1">Reps done <input id="in-hip-1" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="hip" data-set="1"></label></div></div><div class="step" data-key="g1-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="g1-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">60 sec</span></div><p class="how">Have some water, then start the next round.</p><button class="btn" type="button" data-t="60" data-label="Glutes · Round 1 · Rest">Start 1:00 timer</button></div></div></section>
+<section class="section block" id="g2"><div class="bhead"><h2>Glutes · Round 2</h2><span class="tag">2 + rest</span></div><div class="step" data-key="g2-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Kettlebell glute bridge done" data-key="g2-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Kettlebell glute bridge</span><span class="reps">15–20 reps</span></div><p class="how">Lie on your back, knees bent, feet flat, kettlebell held on your hips. Push through your heels and squeeze your bum to lift. Hold 2 seconds at the top, lower slowly. Keep your ribs down so your lower back doesn&#x27;t arch. If your right knee aches, move your feet a little further away.</p><label class="log" for="in-bridge-2">Reps done <input id="in-bridge-2" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="bridge" data-set="2"></label></div></div><div class="step" data-key="g2-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Side-lying leg raise done" data-key="g2-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Side-lying leg raise</span><span class="reps">12–15 each side</span></div><p class="how">Lie on your side, bottom knee bent, top leg straight and slightly behind you, toes pointing forward. Lift the top leg about a hand&#x27;s height, pause, lower slowly. You should feel it at the side of your bum, not the front of your hip.</p><label class="log" for="in-hip-2">Reps done <input id="in-hip-2" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="hip" data-set="2"></label></div></div><div class="step" data-key="g2-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="g2-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">60 sec</span></div><p class="how">Have some water, then start the next round.</p><button class="btn" type="button" data-t="60" data-label="Glutes · Round 2 · Rest">Start 1:00 timer</button></div></div></section>
+<section class="section block" id="g3"><div class="bhead"><h2>Glutes · Round 3</h2><span class="tag">2 + rest</span></div><div class="step" data-key="g3-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Kettlebell glute bridge done" data-key="g3-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Kettlebell glute bridge</span><span class="reps">15–20 reps</span></div><p class="how">Lie on your back, knees bent, feet flat, kettlebell held on your hips. Push through your heels and squeeze your bum to lift. Hold 2 seconds at the top, lower slowly. Keep your ribs down so your lower back doesn&#x27;t arch. If your right knee aches, move your feet a little further away.</p><label class="log" for="in-bridge-3">Reps done <input id="in-bridge-3" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="bridge" data-set="3"></label></div></div><div class="step" data-key="g3-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Side-lying leg raise done" data-key="g3-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Side-lying leg raise</span><span class="reps">12–15 each side</span></div><p class="how">Lie on your side, bottom knee bent, top leg straight and slightly behind you, toes pointing forward. Lift the top leg about a hand&#x27;s height, pause, lower slowly. You should feel it at the side of your bum, not the front of your hip.</p><label class="log" for="in-hip-3">Reps done <input id="in-hip-3" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="hip" data-set="3"></label></div></div><div class="step" data-key="g3-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="g3-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">60 sec</span></div><p class="how">Have some water, then start the next round.</p><button class="btn" type="button" data-t="60" data-label="Glutes · Round 3 · Rest">Start 1:00 timer</button></div></div></section>
+<section class="section block" id="s"><div class="bhead"><h2>Shoulders</h2><span class="tag">2 sets</span></div><p class="note">Slow and controlled. This one builds up your shoulders, especially your left.</p><div class="step" data-key="s-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Lying Y raise done" data-key="s-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Lying Y raise</span><span class="reps">10 reps</span></div><p class="how">Lie face down, forehead on a folded towel, arms overhead in a Y with thumbs up. Lift both arms a few centimetres off the floor, hold 2 seconds, lower. No weight needed. If your left shoulder hurts, stop this one and tell Craig.</p><label class="log" for="in-y-1">Reps done <input id="in-y-1" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="y" data-set="1"></label></div></div><div class="step" data-key="s-1"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Rest done" data-key="s-1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Rest</span><span class="reps">45 sec</span></div><p class="how">Shake your arms out.</p><button class="btn" type="button" data-t="45" data-label="Shoulders · Rest">Start 0:45 timer</button></div></div><div class="step" data-key="s-2"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Lying Y raise done" data-key="s-2"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Lying Y raise</span><span class="reps">10 reps</span></div><p class="how">Lie face down, forehead on a folded towel, arms overhead in a Y with thumbs up. Lift both arms a few centimetres off the floor, hold 2 seconds, lower. No weight needed. If your left shoulder hurts, stop this one and tell Craig.</p><label class="log" for="in-y-2">Reps done <input id="in-y-2" class="num" type="number" inputmode="numeric" min="0" max="60" placeholder="–" data-ex="y" data-set="2"></label></div></div></section>
+<section class="section block" id="c"><div class="bhead"><h2>Cool-down</h2><span class="tag">3 min</span></div><p class="note">Nice work. Let your breathing settle.</p><div class="step" data-key="c-0"><button class="tick" type="button" aria-pressed="false" aria-label="Mark Stretch done" data-key="c-0"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="#0b0d08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="sbody"><div class="sname"><span>Stretch</span><span class="reps">3 min</span></div><p class="how">30 seconds each: front of thighs, bum, chest in a doorway, and across-the-body shoulder stretch both sides.</p><button class="btn" type="button" data-t="180" data-label="Cool-down · Stretch">Start 3:00 timer</button></div></div></section>
+  </main>
+
+  <section class="section info block">
+    <h2>How hard should it feel?</h2>
+    <p>Stop each set when you could only do about <strong>2 more good reps</strong>.</p>
+    <div class="scale">
+      <div><strong>6+ more?</strong>Make it harder</div>
+      <div class="ok"><strong>About 2 more</strong>Just right</div>
+      <div><strong>Form going?</strong>Make it easier</div>
+    </div>
+    <p>When you hit the top of the rep range on every set, make it harder next time:</p>
+    <ul>
+      <li>Curls <span>· stand with your feet wider on the band, or swap to the heavier band</span></li>
+      <li>Kickbacks <span>· take 3 seconds to lower</span></li>
+      <li>Glute bridge <span>· hold the top for 3 seconds</span></li>
+      <li>Leg raise <span>· pause for 2 seconds at the top</span></li>
+    </ul>
+  </section>
+
+  <section class="section info block send" id="send">
+    <h2>Send your session to Craig</h2>
+    <p>Your reps fill in below as you go. Add how it felt, then copy it into your WhatsApp chat with Craig.</p>
+    <div class="row">
+      <span class="caps">How did it feel?</span>
+      <div class="choices" id="feel">
+        <button class="choice" type="button" id="feel-easy" aria-pressed="false" data-v="Too easy">Too easy</button>
+        <button class="choice" type="button" id="feel-right" aria-pressed="false" data-v="About right">About right</button>
+        <button class="choice" type="button" id="feel-hard" aria-pressed="false" data-v="Too hard">Too hard</button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="caps">Energy today, out of 10</span>
+      <div class="choices energy" id="energy"></div>
+    </div>
+    <div class="row">
+      <label class="caps" for="sore">Anything sore or niggly?</label>
+      <input class="textin" id="sore" type="text" placeholder="e.g. nothing, or right knee a bit achy">
+    </div>
+    <div class="row">
+      <label class="caps" for="msg">Your message</label>
+      <textarea class="textin" id="msg" readonly></textarea>
+    </div>
+    <div class="actions">
+      <button class="btn solid" id="copy" type="button">Copy message</button>
+      <a class="btn" id="wa" href="https://wa.me/" target="_blank" rel="noopener">Open WhatsApp</a>
+      <span class="copied" id="copied" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <button class="reset" id="reset" type="button">Clear everything and start again</button>
+  <footer><span class="caps">Coaching by Craig · coachingbycraig.co.uk</span></footer>
+</div>
+
+<div class="dock" id="dock" aria-live="polite">
+  <div class="dock-in">
+    <div class="clock" id="clock">5:00</div>
+    <div class="dlabel"><span class="caps" id="dockCap">Ready</span><div id="dockText">Warm-up · Warm up</div></div>
+    <button class="btn solid" id="toggle" type="button">Start</button>
+  </div>
+</div>
+
+<script>
+const KEYS = {"w": 1, "a1": 3, "a2": 3, "a3": 3, "g1": 3, "g2": 3, "g3": 3, "s": 3, "c": 1};            /* block id -> number of steps */
+const NB = Object.keys(KEYS).length;
+const STORE = "cbc-debbie-home-1";
+let st = {done:{}, reps:{}, band:"lighter band (18 kg tag)", feel:"", energy:"", sore:""};
+try { st = Object.assign(st, JSON.parse(localStorage.getItem(STORE) || "{}")); } catch(e) {}
+const save = () => { try { localStorage.setItem(STORE, JSON.stringify(st)); } catch(e) {} };
+const $ = id => document.getElementById(id);
+
+/* energy buttons */
+$("energy").innerHTML = Array.from({length:10}, (_,i) =>
+  `<button class="choice" type="button" id="en-${i+1}" aria-pressed="false" data-v="${i+1}">${i+1}</button>`).join("");
+
+function applyState(){
+  document.querySelectorAll(".step").forEach(s => {
+    const on = !!st.done[s.dataset.key];
+    s.classList.toggle("done", on);
+    s.querySelector(".tick").setAttribute("aria-pressed", on);
+  });
+  document.querySelectorAll(".num").forEach(i => { const v = st.reps[i.id]; i.value = (v ?? ""); });
+  document.querySelectorAll('input[name="band"]').forEach(r => r.checked = (r.value === st.band));
+  document.querySelectorAll("#feel .choice").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === st.feel));
+  document.querySelectorAll("#energy .choice").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === String(st.energy)));
+  $("sore").value = st.sore || "";
+  updateProgress(); buildMsg();
+}
+
+function updateProgress(){
+  let count = 0, currentSet = false;
+  const bars = $("progress").children;
+  Object.keys(KEYS).forEach((id, n) => {
+    const all = Array.from({length:KEYS[id]}, (_,i) => st.done[id+"-"+i]).every(Boolean);
+    const el = $(id);
+    el.classList.toggle("complete", all);
+    el.classList.remove("current");
+    if (!all && !currentSet){ el.classList.add("current"); currentSet = true; }
+    bars[n].classList.toggle("done", all);
+    if (all) count++;
+  });
+  $("progressText").textContent = count === NB ? "All done. Brilliant work." : `${count} of ${NB} done`;
+}
+
+function sets(ex, n){
+  const vals = Array.from({length:n}, (_,i) => st.reps["in-"+ex+"-"+(i+1)]);
+  return vals.map(v => (v === undefined || v === "") ? "__" : v).join(" / ");
+}
+function buildMsg(){
+  const lines = [
+    "HOME SESSION DONE ✅",
+    `Curls, ${st.band}: ${sets("curl",3)}`,
+    `Kickbacks, 3 kg: ${sets("kick",3)}`,
+    `Glute bridge, 7.5 kg: ${sets("bridge",3)}`,
+    `Side-lying leg raise: ${sets("hip",3)}`,
+    `Y raise: ${sets("y",2)}`,
+    `How it felt: ${st.feel || "__"}`,
+    `Energy: ${st.energy ? st.energy + "/10" : "__/10"}`,
+    `Sore or niggly: ${st.sore || "__"}`
+  ];
+  const text = lines.join("\n");
+  $("msg").value = text;
+  $("wa").href = "https://wa.me/?text=" + encodeURIComponent(text);
+  return text;
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest(".tick");
+  if (t){ const k = t.dataset.key; st.done[k] = !st.done[k]; save(); applyState(); return; }
+  const f = e.target.closest("#feel .choice");
+  if (f){ st.feel = st.feel === f.dataset.v ? "" : f.dataset.v; save(); applyState(); return; }
+  const en = e.target.closest("#energy .choice");
+  if (en){ st.energy = String(st.energy) === en.dataset.v ? "" : en.dataset.v; save(); applyState(); return; }
+  const b = e.target.closest("[data-t]");
+  if (b){ setTimer(+b.dataset.t, b.dataset.label); start(); }
+});
+document.addEventListener("input", e => {
+  if (e.target.classList.contains("num")){ st.reps[e.target.id] = e.target.value; save(); buildMsg(); }
+  if (e.target.id === "sore"){ st.sore = e.target.value; save(); buildMsg(); }
+});
+document.addEventListener("change", e => {
+  if (e.target.name === "band"){ st.band = e.target.value; save(); buildMsg(); }
+});
+
+$("copy").addEventListener("click", () => {
+  const text = buildMsg();
+  const done = () => { $("copied").textContent = "Copied. Paste it into your chat with Craig."; };
+  const fallback = () => { const m = $("msg"); m.focus(); m.select(); $("copied").textContent = "Selected. Press copy on your keyboard or phone."; };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch(e) { fallback(); }
+});
+
+$("reset").addEventListener("click", () => {
+  st = {done:{}, reps:{}, band:"lighter band (18 kg tag)", feel:"", energy:"", sore:""};
+  save(); applyState(); $("copied").textContent = "";
+});
+
+/* timer (same as the other Coaching by Craig cards) */
+let total = 300, left = 300, iv = null, audio = null, wake = null;
+const dock = $("dock"), clock = $("clock"), tog = $("toggle");
+const fmt = s => `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+function setTimer(s, label){
+  stop(); total = left = s; clock.textContent = fmt(s);
+  $("dockCap").textContent = "Ready"; $("dockText").textContent = label;
+  dock.classList.remove("finished");
+}
+function beep(){
+  try{
+    audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+    [0, .35, .7].forEach(d => {
+      const o = audio.createOscillator(), g = audio.createGain();
+      o.frequency.value = 880; o.connect(g); g.connect(audio.destination);
+      g.gain.setValueAtTime(.25, audio.currentTime + d);
+      g.gain.exponentialRampToValueAtTime(.001, audio.currentTime + d + .3);
+      o.start(audio.currentTime + d); o.stop(audio.currentTime + d + .3);
+    });
+  }catch(e){}
+  try{ navigator.vibrate && navigator.vibrate([300,150,300]); }catch(e){}
+}
+async function start(){
+  if (left <= 0) left = total;
+  try{ audio = audio || new (window.AudioContext || window.webkitAudioContext)(); audio.resume(); }catch(e){}
+  try{ if ("wakeLock" in navigator) wake = await navigator.wakeLock.request("screen"); }catch(e){}
+  clearInterval(iv);
+  const end = Date.now() + left*1000;
+  dock.classList.add("running"); dock.classList.remove("finished");
+  $("dockCap").textContent = "Running"; tog.textContent = "Pause";
+  iv = setInterval(() => {
+    left = Math.max(0, Math.round((end - Date.now())/1000));
+    clock.textContent = fmt(left);
+    if (left === 0){ stop(); dock.classList.add("finished"); $("dockCap").textContent = "Time's up"; beep(); }
+  }, 250);
+}
+function stop(){
+  clearInterval(iv); iv = null;
+  dock.classList.remove("running");
+  tog.textContent = left > 0 && left < total ? "Resume" : "Start";
+  try{ wake && wake.release(); }catch(e){} wake = null;
+}
+tog.addEventListener("click", () => {
+  if (iv){ stop(); $("dockCap").textContent = "Paused"; } else start();
+});
+
+applyState();
+</script>
+
+</body></html>

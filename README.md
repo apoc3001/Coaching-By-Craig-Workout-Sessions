@@ -7,6 +7,7 @@ Tap a link to open the session. On your phone, press and hold the link to copy i
 | First gym session | https://sessions.coachingbycraig.co.uk/gym |
 | Home session one (KB + DBs) | https://sessions.coachingbycraig.co.uk/home-1 |
 | Home session two (KB + DBs) | https://sessions.coachingbycraig.co.uk/home-2 |
+| Arms & glutes home session (band, DBs, KB) | https://sessions.coachingbycraig.co.uk/home-arms-glutes |
 
 ## Adding a new session
 
